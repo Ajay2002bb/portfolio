@@ -6,6 +6,10 @@
     <title>AJAY B B | Full-Stack Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("qVZ0TmDglQwdcdT7r"); // Replace with your User ID
+</script>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -222,16 +226,22 @@
             </div>
         </div>
     </section>
+
+
 <!-- Contact Section -->
 <section id="contact" class="section">
     <div class="container">
         <h2 class="section-title">Contact Me</h2>
-        <form id="contactForm" action="https://formspree.io/f/xbjndqbg" method="POST" class="contact-form">
+        
+        <!-- EmailJS Form -->
+        <form id="emailjs-form" class="contact-form">
             <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="from_name" placeholder="Your Name" required>
+                <!-- Note: Changed 'name' to 'from_name' for EmailJS -->
             </div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="email" name="reply_to" placeholder="Your Email" required>
+                <!-- Changed 'email' to 'reply_to' -->
             </div>
             <div class="form-group">
                 <input type="text" name="subject" placeholder="Subject" required>

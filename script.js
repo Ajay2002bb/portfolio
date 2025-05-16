@@ -93,3 +93,35 @@ document.querySelectorAll('.section').forEach(section => {
 
 // Trigger initial check
 revealOnScroll();
+
+// EmailJS Form Submission
+document.getElementById('emailjs-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    const submitBtn = this.querySelector('button[type="submit"]');
+    
+    // Change button text during submission
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    status.textContent = '';
+    
+    emailjs.sendForm(
+        'service_fh6mw5q',   // From EmailJS > Email Services
+        'template_jv1tzrn',  // From EmailJS > Email Templates
+        this                 // Form element
+    )
+    .then(() => {
+        status.textContent = 'Message sent successfully!';
+        status.style.color = '#2ecc71'; // Green
+        this.reset();
+    })
+    .catch((err) => {
+        status.textContent = 'Failed to send. Please try again.';
+        status.style.color = '#e74c3c'; // Red
+        console.error('EmailJS Error:', err);
+    })
+    .finally(() => {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+    });
+});
